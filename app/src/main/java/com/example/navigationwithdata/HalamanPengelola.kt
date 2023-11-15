@@ -72,6 +72,7 @@ fun EsJumboApp(
         }
     ){innerPadding ->
         val uiState by viewModel.stateUI.collectAsState()
+        val nameState by viewModel.nameUI.collectAsState()
         NavHost(
             navController = navController,
             startDestination = PengelolaHalaman.Home.name,
@@ -82,10 +83,12 @@ fun EsJumboApp(
                     onNextButtonClicked = { navController.navigate(PengelolaHalaman.Contact.name) })
             }
             composable(route = PengelolaHalaman.Contact.name){
-                HalamanForm(onSubmitButtonClicked = {
-                    viewModel.setContact(it)
-                    navController.navigate(PengelolaHalaman.Rasa.name)
-                })
+                HalamanForm(
+                    onSubmitButtonClicked = {
+                        viewModel.setContact(it)
+                        navController.navigate(PengelolaHalaman.Rasa.name)},
+                    onBackButtonCLicked = {navController.popBackStack()
+                    })
             }
             composable(route = PengelolaHalaman.Rasa.name){
                 val context = LocalContext.current
@@ -96,6 +99,12 @@ fun EsJumboApp(
                     onNextButtonClicked = { navController.navigate(PengelolaHalaman.Summary.name) },
                     onCancelButtonClicked = { cancelOrderAndNavigateToHome(viewModel, navController)}
                 )
+            }
+            composable(route = PengelolaHalaman.Summary.name) {
+                HalamanDua(
+                    orderUiState = uiState,
+                    formState = nameState,
+                    onCancelButtonClicked = { cancelOrderAndNavigateToRasa(navController) })
             }
         }
     }

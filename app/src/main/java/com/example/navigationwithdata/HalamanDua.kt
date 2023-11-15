@@ -48,7 +48,7 @@ fun HalamanDua(
             FormatDataPemesanan(
                 namaPemesanan = formState.nama,
                 alamatPemesan = formState.alamat,
-                phonePemesan = formState.phone
+                phonePemesan = formState.tlp
             )
             Spacer(modifier = Modifier.padding(8.dp))
             items.forEach { item ->

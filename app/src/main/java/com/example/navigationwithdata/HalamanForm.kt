@@ -4,6 +4,7 @@ package com.example.navigationwithdata
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -23,7 +24,8 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun HalamanForm(
-    onSubmitButtonClicked: (MutableList<String>) -> Unit
+    onSubmitButtonClicked: (MutableList<String>) -> Unit,
+    onBackButtonCLicked: () -> Unit
 ){
     var namaTxt by remember { mutableStateOf("")}
     var alamatTxt by remember { mutableStateOf("")}
@@ -47,8 +49,15 @@ fun HalamanForm(
         })
         
         Spacer(modifier = Modifier.height(15.dp))
-        Button(onClick = {onSubmitButtonClicked(listData)}) {
-            Text(text = stringResource(id = R.string.confirm))
+        Row (modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ){
+            Button(onClick = {onBackButtonCLicked}) {
+                Text(text = stringResource(id = R.string.back_button))
+            }
+            Button(onClick = {onSubmitButtonClicked(listData)}) {
+                Text(text = stringResource(id = R.string.submit_button))
+            }
         }
     }
 

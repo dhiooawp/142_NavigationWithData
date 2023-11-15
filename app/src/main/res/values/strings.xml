@@ -18,4 +18,5 @@
     <string name="nama">Nama Pelanggan</string>
     <string name="alamat">alamat Pelanggan</string>
     <string name="nomor">Nomor Pelanggan</string>
+    <string name="submit_button">Submit</string>
 </resources>
