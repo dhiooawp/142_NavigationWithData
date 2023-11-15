@@ -30,7 +30,8 @@ import com.example.navigationwithdata.data.SumberData.flavour
 enum class PengelolaHalaman {
     Home,
     Rasa,
-    Summary
+    Summary,
+    Contact
 }
 
 @Composable
