@@ -1,5 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class,
-    ExperimentalMaterial3Api::class)
+    ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class
+)
 
 package com.example.navigationwithdata
 
@@ -78,7 +79,7 @@ fun EsJumboApp(
         ) {
             composable(route = PengelolaHalaman.Home.name) {
                 HalamanHome(
-                    onNextButtonClicked = { navController.navigate(PengelolaHalaman.Rasa.name) })
+                    onNextButtonClicked = { navController.navigate(PengelolaHalaman.Contact.name) })
             }
             composable(route = PengelolaHalaman.Rasa.name){
                 val context = LocalContext.current
